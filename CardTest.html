@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="BlackjackTest.css">
+        <script src="BlackjackTest.js" defer></script>
+    </head>
+    <body>
+        <div id="cardsDiv">
+            <img src="TEMP" class="card" id="card1">
+            <img src="TEMP" class="card" id="card2">
+        </div>
+        <p id="p">Player Score</p>
+        <button onclick="deal()" id="deal">Deal</button>
+        <button onclick="hit()" id="hit" disabled>Hit</button>
+        <button onclick="stay()" id="stay" disabled>Stay</button>
+        <button onclick="reload()" id="reload" disabled>Clear</button>
+        <p id="test">Dealer Score</p>
+        <div id="dealerDiv">
+            <img src="TEMP" id="dealerCard1">
+            <img src="TEMP" id="dealerCard2">
+        </div><br><br><br><br><br><br>
+        <p id="result">RESULT</p>
+    </body>
+</html>
