@@ -73,7 +73,6 @@ function deal() {
     let [card1, value1] = Card()
     let [card2, value2] = Card()
 
-
     if (card1[4] == "A" || card2[4] == "A") {
         aceCounter ++;
     }
@@ -102,15 +101,41 @@ function deal() {
     if (dealer1[4] == "A") {
         aceDealer ++;
     }
-
-    document.getElementById("dealerCard1").src = dealer1
-    document.getElementById("dealerCard1").className = "card"
-    document.getElementById("dealerCard2").src = "PNG/red_back.png"
-    document.getElementById("dealerCard2").className = "card"
+    dealerCard1 = document.getElementById("dealerCard1")
+    dealerCard1.src = dealer1
+    dealerCard1.className = "card"
+    dealerCard2=document.getElementById("dealerCard2")
+    dealerCard2.src = "PNG/red_back.png"
+    dealerCard2.className = "card"
 
     document.getElementById("test").innerHTML = dealvalue1
 
-    /*let result = dealerLogic()*/
+
+    const img1 = document.getElementById("card1");
+    const img2 = document.getElementById("card2");
+
+    img1.style.display = "flex";
+    img2.style.display = "flex";
+    dealerCard1.style.display = "flex";
+    dealerCard2.style.display = "flex";
+
+    img1.src = card1;
+    img2.src = card2;
+
+    img1.classList.remove("dealAnimation");
+    img2.classList.remove("dealAnimation");
+    void img1.offsetWidth;
+    void img2.offsetWidth;
+    img1.classList.add("dealAnimation");
+    img2.classList.add("dealAnimation");
+
+    dealerCard1.classList.remove("dealerAnimation");
+    dealerCard2.classList.remove("dealerAnimation");
+    void img1.offsetWidth;
+    void img2.offsetWidth;
+    dealerCard1.classList.add("dealerAnimation");
+    dealerCard2.classList.add("dealerAnimation");
+
 
 }
 
@@ -137,8 +162,8 @@ function hit() {
     if (newCard[4] == "A") {
         aceCounter ++;
     }
-
-    let rangeBottom = -15
+// AUTO TILT -- BROKEN RN
+    /*let rangeBottom = -15
     let rangeTop = 15
     
     let step = (rangeTop - rangeBottom) / (counter - 1)
@@ -155,8 +180,11 @@ function hit() {
         }
         let lift = (center - centerDistance) * 5;
         cardRotate.style.transform = `rotate(${rotate}deg) translateY(${-lift}px)`;
-    }
+    }*/
     counter ++;
+
+    img.classList.add("dealAnimation")
+    img.style.display = "flex";
 
     total = parseInt(document.getElementById("p").innerHTML);
     if (total > 21 && aceCounter > 0) {
@@ -213,6 +241,8 @@ function dealerLogic() {
         newDealCard.src = newdeal;
         newDealCard.className = "card";
         newDealCard.id = "Card" + dealCounter;
+        newDealCard.classList.add("dealerAnimation")
+        newDealCard.style.display = "flex";
 
         setTimeout(() => {
             dealerDiv.appendChild(newDealCard);

@@ -20,7 +20,7 @@ body {
 .card { 
     transform: rotate(-5deg);
     transform-origin: 50% 50%;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     width: 100px;
@@ -38,4 +38,22 @@ body {
 
 #result {
     font-size: xx-large;
+}
+
+@keyframes deal {
+    from{transform: scale(0) translateY(-100vh) rotate(0deg);}
+    to{transform: scale(1) translateY(20vh) rotate(355deg);}
+}
+
+@keyframes dealer {
+    from{transform: scale(0) translateY(-30vh) rotate(0deg)}
+    to{transform: scale(1) translateY(10vh) rotate(355deg);}
+}
+
+.dealAnimation {
+    animation: deal 1s forwards;
+}
+
+.dealerAnimation {
+    animation: dealer 1s forwards;
 }
