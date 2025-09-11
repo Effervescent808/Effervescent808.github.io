@@ -162,6 +162,7 @@ function hit() {
     if (newCard[4] == "A") {
         aceCounter ++;
     }
+
 // AUTO TILT -- BROKEN RN
     /*let rangeBottom = -15
     let rangeTop = 15
@@ -181,6 +182,7 @@ function hit() {
         let lift = (center - centerDistance) * 5;
         cardRotate.style.transform = `rotate(${rotate}deg) translateY(${-lift}px)`;
     }*/
+   
     counter ++;
 
     img.classList.add("dealAnimation")
