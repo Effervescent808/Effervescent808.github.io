@@ -87,8 +87,6 @@ function deal() {
     }
 
     if (value1 + value2 == 21) {
-        toggleButton("hit")
-        toggleButton("stay")
         setTimeout(() => {stay()}, 500)
     }
 
@@ -201,8 +199,6 @@ function hit() {
         window.location.href = "you-lose.html"
         }, 1500)*/
     }else if (total == 21){
-        toggleButton("hit")
-        toggleButton("stay")
         setTimeout(() => {stay()}, 500)
     }
 }
