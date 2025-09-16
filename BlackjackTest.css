@@ -3,11 +3,13 @@ html{
     width: 100%;
 }
 body {
-    background-image: url(BlackjackTable.jpg);
+    /*background-image: url(BlackjackTable.jpg);
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: 100% 100%;
+    background-size: 100% 100%;*/
+    background-color: #252526;
 }
+    
 
 #cardsDiv {
     width: 100%;
@@ -25,6 +27,11 @@ body {
     justify-content: center;
     width: 100px;
     margin-left: -30px;
+    filter: drop-shadow(0 0 0 black) 
+            drop-shadow(2px 0 0 black) 
+            drop-shadow(-2px 0 0 black) 
+            drop-shadow(0 2px 0 black) 
+            drop-shadow(0 -2px 0 black);
 }
 
 #dealerDiv {
@@ -64,12 +71,66 @@ body {
     display: inline-block;
     justify-content: center;
     width: auto;
-    padding: 5px;
-    font-size: larger;
+    padding: 4px;
+    font-size: medium;
     font-weight: 800;
+    transform: translateY(3vh);
 }
 
 .score-div {
     text-align: center;
 }
 
+@keyframes winAnim {
+    from {filter: drop-shadow(0 0 2px green) 
+                  drop-shadow(0 0 2px green) 
+                  drop-shadow(0 0 2px green) 
+                  drop-shadow(0 0 2px green) 
+                  drop-shadow(0 0 2px green);}
+
+    to {filter: drop-shadow(0 0 2px green) 
+                drop-shadow(3px 0 2px green) 
+                drop-shadow(-3px 0 2px green) 
+                drop-shadow(0 3px 2px green) 
+                drop-shadow(0 -3px 2px green);}
+}
+
+@keyframes loseAnim {
+    from {filter: drop-shadow(0 0 2px red) 
+                  drop-shadow(0 0 2px red) 
+                  drop-shadow(0 0 2px red) 
+                  drop-shadow(0 0 2px red) 
+                  drop-shadow(0 0 2px red);}
+
+    to {filter: drop-shadow(0 0 2px red) 
+                drop-shadow(3px 0 2px red) 
+                drop-shadow(-3px 0 2px red) 
+                drop-shadow(0 3px 2px red) 
+                drop-shadow(0 -3px 2px red);}
+}
+
+@keyframes pushAnim {
+    from {filter: drop-shadow(0 0 2px yellow) 
+                  drop-shadow(0 0 2px yellow) 
+                  drop-shadow(0 0 2px yellow) 
+                  drop-shadow(0 0 2px yellow) 
+                  drop-shadow(0 0 2px yellow);}
+
+    to {filter: drop-shadow(0 0 2px yellow) 
+                drop-shadow(3px 0 2px yellow) 
+                drop-shadow(-3px 0 2px yellow) 
+                drop-shadow(0 3px 2px yellow) 
+                drop-shadow(0 -3px 2px yellow);}
+}
+
+.winBorder {
+    animation: winAnim 1s forwards;
+}
+
+.loseBorder {
+    animation: loseAnim 1s forwards;
+}
+
+.pushBorder {
+    animation: pushAnim 1s forwards;
+}

@@ -5,12 +5,12 @@
         <script src="BlackjackTest.js" defer></script>
     </head>
     <body>
+        <div class="score-div">
+            <p id="test" class="score">Dealer Score</p><br>
+        </div>
         <div id="dealerDiv">
             <img src="TEMP" id="dealerCard1" hidden>
             <img src="TEMP" id="dealerCard2" hidden>
-        </div>
-        <div class="score-div">
-            <p id="test" class="score">Dealer Score</p><br>
         </div>
         <button onclick="deal()" id="deal">Deal</button>
         <button onclick="hit()" id="hit" disabled>Hit</button>
@@ -23,6 +23,6 @@
             <img src="TEMP" class="card" id="card1">
             <img src="TEMP" class="card" id="card2">
         </div>
-        <p id="result">RESULT</p>
+        <p id="result" hidden>RESULT</p>
     </body>
 </html>

@@ -89,10 +89,8 @@ function deal() {
     if (value1 + value2 == 21) {
         setTimeout(() => {stay()}, 500)
     }
-
-    image2.style.transform = "rotate(5deg)"
     
-// Player up, Dealer down
+// Player above, Dealer below
 
     let [dealer1, dealvalue1] = Card()
 
@@ -140,6 +138,7 @@ function deal() {
 let counter = 3
 
 function hit() {
+
     let cardDiv = document.getElementById("cardsDiv");
     let [newCard, newCardVal] = Card()
     let img = document.createElement("img");
@@ -152,9 +151,6 @@ function hit() {
         document.getElementById("p").innerHTML = `${parseInt(total) + newCardVal}, ${(parseInt(total) + newCardVal) - 10}`
     } else {
         document.getElementById("p").innerHTML = parseInt(total) + newCardVal
-    }
-    if (parseInt(document.getElementById("p").innerHTML) == 21) {
-        setTimeout(() => {stay()}, 500)
     }
 
     if (newCard[4] == "A") {
@@ -191,10 +187,17 @@ function hit() {
         document.getElementById("p").innerHTML = total -= 10
         aceCounter--;
     }else if (total > 21){
+        let container = document.getElementById("cardsDiv")
+        let children = container.querySelectorAll("*")
         document.getElementById("result").innerHTML = "lose"
-        toggleButton("hit")
-        toggleButton("stay")
-        toggleButton("reload")
+        setTimeout(() => {
+            children.forEach(el => el.classList.add("loseBorder"))
+        },300)
+        setTimeout(() => {
+            toggleButton("hit")
+            toggleButton("stay")
+            toggleButton("reload")
+        }, 150)
         /*setTimeout(() => {
         window.location.href = "you-lose.html"
         }, 1500)*/
@@ -224,6 +227,9 @@ function stay() {
 }
 
 function dealerLogic() {
+    let container = document.getElementById("cardsDiv")
+    let children = container.querySelectorAll("*")
+
     let total = parseInt(document.getElementById("p").innerHTML);
     let dealertotal = parseInt(document.getElementById("test").innerHTML);
 
@@ -252,8 +258,8 @@ function dealerLogic() {
             }
 
             document.getElementById("test").innerHTML = dealertotal
-            setTimeout(() => { dealerLogic(); }, 500);
-        }, 1000);
+            setTimeout(() => { dealerLogic(); }, 1000);
+        }, 1300);
 
         dealCounter++;
     } else {
@@ -261,23 +267,35 @@ function dealerLogic() {
             dealertotal -= 10;
             aceDealer--;
             document.getElementById("test").innerHTML = dealertotal;
-            setTimeout(() => { dealerLogic(); }, 500);
+            setTimeout(() => { dealerLogic(); }, 1000);
         } else if (dealertotal > 21) {
             document.getElementById("result").innerHTML = "dealer bust"
+            setTimeout(() => {
+                children.forEach(el => el.classList.add("winBorder"))
+            },300)
             toggleButton("reload")
         } else if (dealertotal < 22 && total > dealertotal) {
             document.getElementById("result").innerHTML = "win"
+            setTimeout(() => {
+                children.forEach(el => el.classList.add("winBorder"))
+            },300)
             toggleButton("reload")
         } else if (dealertotal < 22 && total < dealertotal) {
             document.getElementById("result").innerHTML = "lose"
+            setTimeout(() => {
+                children.forEach(el => el.classList.add("loseBorder"))
+            },300)
             toggleButton("reload")
         } else if (dealertotal === total) {
             document.getElementById("result").innerHTML = "push"
+            setTimeout(() => {
+                children.forEach(el => el.classList.add("pushBorder"))
+            },300)
             toggleButton("reload")
         }
     }
 }
 
 function reload() {
-    setTimeout(() => {window.location.href = window.location.href}, 500)
+    setTimeout(() => {window.location.href = window.location.href}, 300)
 }
