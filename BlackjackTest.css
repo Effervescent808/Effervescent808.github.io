@@ -19,7 +19,8 @@ body {
     justify-content: center;
     padding: 5px;
     min-height: 170px;
-    min-width: 100%
+    min-width: 100%;
+    overflow: visible;
 }
 
 .card { 
@@ -35,8 +36,6 @@ body {
             drop-shadow(-2px 0 0 black) 
             drop-shadow(0 2px 0 black) 
             drop-shadow(0 -2px 0 black);
-    background-color: transparent;
-    image-rendering: auto;
 }
 
 #dealerDiv {
