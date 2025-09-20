@@ -8,9 +8,6 @@ body {
     background-position: center center;
     background-size: 100% 100%;*/
     background-color: #252526;
-    /* Add padding to prevent clipping at viewport edges */
-    padding: 10px;
-    box-sizing: border-box;
 }
     
 
@@ -20,13 +17,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 15px; /* Increased padding for glow effects */
+    padding: 5px;
     min-height: 170px;
     min-width: 100%;
-    /* CRITICAL FIX: Change overflow to visible */
     overflow: visible;
-    /* Add extra space for glow effects */
-    margin: 5px 0;
 }
 
 .card { 
@@ -51,12 +45,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 15px; /* Increased padding for glow effects */
+    padding:5px;
     min-height: auto;
     min-width: auto;
-    /* Ensure dealer cards don't get clipped either */
-    overflow: visible;
-    margin: 5px 0;
 }
 
 #result {
@@ -96,8 +87,6 @@ body {
 
 .score-div {
     text-align: center;
-    /* Ensure score divs don't clip effects */
-    overflow: visible;
 }
 
 @keyframes winAnim {
@@ -107,11 +96,11 @@ body {
                   drop-shadow(0 0 2px green) 
                   drop-shadow(0 0 2px green);}
 
-    to {filter: drop-shadow(0 0 3px green) 
-                drop-shadow(3px 0 3px green) 
-                drop-shadow(-3px 0 3px green) 
-                drop-shadow(0 3px 3px green) 
-                drop-shadow(0 -3px 3px green);}
+    to {filter: drop-shadow(0 0 2px green) 
+                drop-shadow(3px 0 2px green) 
+                drop-shadow(-3px 0 2px green) 
+                drop-shadow(0 3px 2px green) 
+                drop-shadow(0 -3px 2px green);}
 }
 
 @keyframes loseAnim {
@@ -121,11 +110,11 @@ body {
                   drop-shadow(0 0 2px red) 
                   drop-shadow(0 0 2px red);}
 
-    to {filter: drop-shadow(0 0 3px red) 
-                drop-shadow(3px 0 3px red) 
-                drop-shadow(-3px 0 3px red) 
-                drop-shadow(0 3px 3px red) 
-                drop-shadow(0 -3px 3px red);}
+    to {filter: drop-shadow(0 0 2px red) 
+                drop-shadow(3px 0 2px red) 
+                drop-shadow(-3px 0 2px red) 
+                drop-shadow(0 3px 2px red) 
+                drop-shadow(0 -3px 2px red);}
 }
 
 @keyframes pushAnim {
@@ -135,11 +124,11 @@ body {
                   drop-shadow(0 0 2px yellow) 
                   drop-shadow(0 0 2px yellow);}
 
-    to {filter: drop-shadow(0 0 3px yellow) 
-                drop-shadow(3px 0 3px yellow) 
-                drop-shadow(-3px 0 3px yellow) 
-                drop-shadow(0 3px 3px yellow) 
-                drop-shadow(0 -3px 3px yellow);}
+    to {filter: drop-shadow(0 0 2px yellow) 
+                drop-shadow(3px 0 2px yellow) 
+                drop-shadow(-3px 0 2px yellow) 
+                drop-shadow(0 3px 2px yellow) 
+                drop-shadow(0 -3px 2px yellow);}
 }
 
 .winBorder {
@@ -152,36 +141,4 @@ body {
 
 .pushBorder {
     animation: pushAnim 1s forwards;
-}
-
-/* Mobile-specific fixes */
-@media screen and (max-width: 768px) {
-    body {
-        padding: 5px;
-        /* Prevent horizontal scrolling */
-        overflow-x: hidden;
-        /* But allow vertical scrolling if needed */
-        overflow-y: auto;
-    }
-    
-    #cardsDiv, #dealerDiv {
-        /* Ensure containers have enough space for glow effects */
-        padding: 20px 10px;
-        margin: 15px 0;
-        /* Force containers to be visible */
-        overflow: visible !important;
-    }
-    
-    .card {
-        /* Slightly reduce card size on mobile if needed */
-        width: 90px;
-        margin-left: -25px;
-    }
-    
-    /* Ensure the viewport has enough space */
-    html {
-        /* Prevent zoom-to-fit that might clip effects */
-        -webkit-text-size-adjust: 100%;
-        -ms-text-size-adjust: 100%;
-    }
 }
