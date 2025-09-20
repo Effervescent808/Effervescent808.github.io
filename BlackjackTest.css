@@ -20,6 +20,7 @@ body {
     padding: 5px;
     min-height: auto;
     min-width: auto;
+    overflow: auto;
 }
 
 .card { 
