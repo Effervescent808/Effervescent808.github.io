@@ -18,9 +18,8 @@ body {
     align-items: center;
     justify-content: center;
     padding: 5px;
-    min-height: auto;
-    min-width: auto;
-    overflow: auto;
+    min-height: 170px;
+    min-width: 100%
 }
 
 .card { 
