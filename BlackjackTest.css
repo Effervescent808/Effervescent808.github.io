@@ -18,6 +18,8 @@ body {
     align-items: center;
     justify-content: center;
     margin-top: 5px;
+    min-height: auto;
+    min-width: auto;
 }
 
 .card { 
@@ -42,6 +44,8 @@ body {
     align-items: center;
     justify-content: center;
     margin:5px;
+    min-height: auto;
+    min-width: auto;
 }
 
 #result {
