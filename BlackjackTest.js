@@ -192,12 +192,10 @@ function hit() {
         document.getElementById("result").innerHTML = "lose"
         setTimeout(() => {
             children.forEach(el => el.classList.add("loseBorder"))
-        },300)
-        setTimeout(() => {
             toggleButton("hit")
             toggleButton("stay")
             toggleButton("reload")
-        }, 150)
+        }, 1000)
         /*setTimeout(() => {
         window.location.href = "you-lose.html"
         }, 1500)*/
