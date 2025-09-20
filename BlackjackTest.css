@@ -17,7 +17,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 5px;
+    padding: 5px;
     min-height: auto;
     min-width: auto;
 }
@@ -43,7 +43,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin:5px;
+    padding:5px;
     min-height: auto;
     min-width: auto;
 }
