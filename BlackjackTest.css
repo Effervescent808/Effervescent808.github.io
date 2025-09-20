@@ -36,6 +36,7 @@ body {
             drop-shadow(0 2px 0 black) 
             drop-shadow(0 -2px 0 black);
     background-color: transparent;
+    image-rendering: auto;
 }
 
 #dealerDiv {
