@@ -161,7 +161,10 @@ body {
 }
 
 .button {
-    padding: .5%;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
     font-weight: 800;
     border-radius: 15%;
 }
