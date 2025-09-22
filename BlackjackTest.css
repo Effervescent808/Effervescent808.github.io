@@ -17,7 +17,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px;
+    padding: 20px;
     min-height: 170px;
     min-width: 100%;
     overflow: visible;
@@ -37,6 +37,7 @@ body {
             drop-shadow(0 2px 0 black) 
             drop-shadow(0 -2px 0 black);
     background: transparent;
+    will-change: transform;
 }
 
 #dealerDiv {
