@@ -65,12 +65,21 @@ body {
     to{transform: scale(1) translateY(0vh) rotate(355deg);}
 }
 
+@keyframes fade {
+    from{opacity: 100%;}
+    to{opacity: 0%;}
+}
+
 .dealAnimation {
     animation: deal 1s forwards;
 }
 
 .dealerAnimation {
     animation: dealer 1s forwards;
+}
+
+.fadeAnim {
+    animation: fade 1s forwards;
 }
 
 .score {
@@ -142,4 +151,11 @@ body {
 
 .pushBorder {
     animation: pushAnim 1s forwards;
+}
+
+#buttonDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1%;   
 }

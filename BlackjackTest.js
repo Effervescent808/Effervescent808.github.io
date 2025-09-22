@@ -1,3 +1,5 @@
+gameState = 0
+
 function Name(card) {
     card = parseInt(card)
     if (card < 11 && card > 1) {
@@ -192,9 +194,10 @@ function hit() {
         document.getElementById("result").innerHTML = "lose"
         setTimeout(() => {
             children.forEach(el => el.classList.add("loseBorder"))
+            gameState = 1
             toggleButton("hit")
             toggleButton("stay")
-            toggleButton("reload")
+            toggleButton("deal")
         }, 1000)
         /*setTimeout(() => {
         window.location.href = "you-lose.html"
@@ -268,32 +271,96 @@ function dealerLogic() {
             setTimeout(() => { dealerLogic(); }, 1000);
         } else if (dealertotal > 21) {
             document.getElementById("result").innerHTML = "dealer bust"
+            gameState = 1
             setTimeout(() => {
                 children.forEach(el => el.classList.add("winBorder"))
+                toggleButton("deal")
             },300)
-            toggleButton("reload")
+            
         } else if (dealertotal < 22 && total > dealertotal) {
             document.getElementById("result").innerHTML = "win"
+            gameState = 1
             setTimeout(() => {
                 children.forEach(el => el.classList.add("winBorder"))
+                toggleButton("deal")
             },300)
-            toggleButton("reload")
+            
         } else if (dealertotal < 22 && total < dealertotal) {
             document.getElementById("result").innerHTML = "lose"
+            gameState = 1
             setTimeout(() => {
                 children.forEach(el => el.classList.add("loseBorder"))
+                toggleButton("deal")
             },300)
-            toggleButton("reload")
+            
         } else if (dealertotal === total) {
             document.getElementById("result").innerHTML = "push"
+            gameState = 1
             setTimeout(() => {
                 children.forEach(el => el.classList.add("pushBorder"))
+                toggleButton("deal")
             },300)
-            toggleButton("reload")
+            
         }
     }
 }
 
-function reload() {
-    setTimeout(() => {window.location.href = window.location.href}, 300)
+
+function dealButton() {
+    if (gameState == 0) {
+        deal()
+    } else {
+        clearGame()
+        document.getElementById("deal").disabled = true;
+        setTimeout(() => {
+            resetGameState()
+        }, 1200);
+        setTimeout(() => {
+            deal()
+        },1600);
+    }
+}
+
+function clearGame() {
+    let container1 = document.getElementById("cardsDiv")
+    let children1 = container1.querySelectorAll("*")
+    let container2 = document.getElementById("dealerDiv")
+    let children2 = container2.querySelectorAll("*")
+
+    children1.forEach(el => {
+        el.classList.remove("winBorder", "loseBorder", "pushBorder")
+        el.classList.add("fadeAnim")
+});
+    children2.forEach(el => {
+        el.classList.add("fadeAnim")
+});
+    
+}
+
+function resetGameState() {
+    currentCards = [];
+    aceCounter = 0;
+    aceDealer = 0;
+    counter = 3;
+    dealCounter = 3;
+    gameState = 0;
+    
+    // Hide all cards and remove dynamically created ones
+    const allCards = document.querySelectorAll('.card');
+    allCards.forEach(card => {
+        card.style.display = 'none';
+        card.className = 'card'; // Remove all animation classes
+        if (parseInt(card.id.replace(/\D/g, '')) > 2) {
+            card.remove(); // Remove dynamically created cards
+        }
+    });
+    
+    // Reset scores
+    document.getElementById("p").innerHTML = "Player Score";
+    document.getElementById("test").innerHTML = "Dealer Score";
+    document.getElementById("result").innerHTML = "RESULT";
+    
+    // Reset buttons
+    document.getElementById("hit").disabled = true;
+    document.getElementById("stay").disabled = true;
 }
