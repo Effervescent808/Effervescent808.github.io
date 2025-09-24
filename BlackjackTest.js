@@ -361,6 +361,7 @@ function resetGameState() {
     document.getElementById("result").innerHTML = "RESULT";
     
     // Reset buttons
+    document.getElementById("deal").disabled = false;
     document.getElementById("hit").disabled = true;
     document.getElementById("stay").disabled = true;
 }
