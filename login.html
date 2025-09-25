@@ -1,0 +1,52 @@
+<!Doctype html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="login.css">
+
+        <script>
+            function submit() {
+                //localStorage.clear()
+                
+                const field = document.getElementById("player")
+
+                while (true) {
+                    if (!/^[A-Za-z]+$/.test(field.value)) {
+                        alert("Use only letters with no spaces");
+                        field.value = "";
+                        return;
+                    } else {
+                        break;
+                    }
+                }
+
+                let player = document.getElementById('player').value
+                console.log(player)
+
+                let balance = localStorage.getItem(player)
+                console.log(balance)
+
+                if (balance !== null) {
+                    sessionStorage.setItem('Current Player', player)
+                } else {
+                    localStorage.setItem(player, 5000)
+                    sessionStorage.setItem('Current Player', player)
+                }
+                console.log(sessionStorage.getItem('Current Player'))
+                console.log(localStorage.getItem(player))
+
+                field.value = ""
+
+                setTimeout (() => {window.location.href = 'CardTest.html'}, 500)
+                console.log('switching pages...')
+            }
+        </script>
+    </head>
+    <body>
+        <div id="login">
+            <p id="instructions">Login with your name:</p>
+            <input type="text" id="player" name="player" placeholder="Name">
+            <input type="submit" id="submit" Value="Submit" onclick="submit()">
+        </div>
+    </body>
+</html>

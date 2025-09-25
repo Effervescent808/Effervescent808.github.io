@@ -1,0 +1,36 @@
+body {
+    background-color: #252526;
+}
+
+#login {
+    margin: 0 auto; 
+    width: fit-content; 
+    text-align: center; 
+    font-size: x-large;
+}
+
+#instructions {
+    color: white;
+    font-size: 38px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+}
+
+input[type=text] {
+    padding: 3px;
+    border: none;
+    border-bottom: 2px solid white;
+    background-color: #121212;
+    caret-color: white;
+    color: white;
+}
+
+input[type=submit] {
+    padding: 5px;
+    border-radius: 10%;
+}
+
+input:focus {
+    outline: none;
+}
+
