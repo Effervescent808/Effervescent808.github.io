@@ -7,6 +7,10 @@
         <title>Blackjack</title>
     </head>
     <body>
+        <div id="player_div">
+            <p id="Player">Player: </p>
+            <p id="balance">Balance: </p>
+        </div>
         <div class="score-div">
             <p id="test" class="score">Dealer Score</p><br>
         </div>
@@ -26,6 +30,9 @@
             <button onclick="hit()" id="hit" class="button" disabled>Hit</button>
             <button onclick="stay()" id="stay" class="button" disabled>Stay</button>
         </div>
-        <p id="result" hidden>RESULT</p>
+        <div id="bal_div">
+            <input id="betAmount" type="number" placeholder="Bet Amount">
+            <input id="submit" type="button" value="Submit">
+        </div>
     </body>
 </html>

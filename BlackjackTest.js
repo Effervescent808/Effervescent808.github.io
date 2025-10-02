@@ -1,5 +1,17 @@
 gameState = 0
 
+const player = sessionStorage.getItem('Current Player')
+document.getElementById("Player").innerHTML = `Player: ${player}`
+
+const balance = localStorage.getItem(player)
+document.getElementById('balance').innerHTML = `Balance: ${balance}`
+
+const input=document.getElementById("betAmount")
+
+function submit() {
+    
+}
+
 function Name(card) {
     card = parseInt(card)
     if (card < 11 && card > 1) {
