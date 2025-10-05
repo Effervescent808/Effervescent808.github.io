@@ -80,7 +80,7 @@ body {
 
 @keyframes deal {
     from{transform: scale(0) translateY(-100vh) rotate(0deg);}
-    to{transform: scale(1) translateY(5vh) rotate(355deg);}
+    to{transform: scale(1) translateY(3vh) rotate(355deg);}
 }
 
 @keyframes dealer {
@@ -176,8 +176,8 @@ body {
 }
 
 @keyframes saveAnim {
-    from{transform: translateY(5vh) rotate(-5deg);}
-    to{transform: translateY(5vh) rotate(-5deg);}
+    from{transform: translateY(3vh) rotate(-5deg);}
+    to{transform: translateY(3vh) rotate(-5deg);}
 }
 
 .winBorder {
