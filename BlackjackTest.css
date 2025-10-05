@@ -80,7 +80,7 @@ body {
 
 @keyframes deal {
     from{transform: scale(0) translateY(-100vh) rotate(0deg);}
-    to{transform: scale(1) translateY(0vh) rotate(355deg);}
+    to{transform: scale(1) translateY(5vh) rotate(355deg);}
 }
 
 @keyframes dealer {
@@ -175,16 +175,22 @@ body {
                 drop-shadow(0 -3px 2px yellow);}
 }
 
+@keyframes saveAnim {
+    from{transform: translateY(5vh) rotate(-5deg);}
+    to{transform: translateY(5vh) rotate(-5deg);}
+}
+
 .winBorder {
-    animation: winAnim 1s forwards;
+    animation: winAnim 1s forwards, saveAnim .1s forwards;
+    
 }
 
 .loseBorder {
-    animation: loseAnim 1s forwards;
+    animation: loseAnim 1s forwards, saveAnim .1s forwards;
 }
 
 .pushBorder {
-    animation: pushAnim 1s forwards;
+    animation: pushAnim 1s forwards, saveAnim .1s forwards;
 }
 
 #buttonDiv {
