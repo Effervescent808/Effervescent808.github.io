@@ -1,6 +1,6 @@
 # Blackjack
 
-**I love Blackjack**
+### **I love Blackjack**
 
 So much so that I made a website for it
 
