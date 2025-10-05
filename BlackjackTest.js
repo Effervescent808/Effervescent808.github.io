@@ -1,15 +1,35 @@
-gameState = 0
+window.addEventListener("load", () => {
+    const playerName = sessionStorage.getItem("Current Player");
 
-const player = sessionStorage.getItem('Current Player')
-document.getElementById("Player").innerHTML = `Player: ${player}`
+    if (!playerName) {
+        alert("No player logged in — redirecting to login page.");
+        window.location.href = "login.html";
+        return;
+    }
 
-const balance = localStorage.getItem(player)
-document.getElementById('balance').innerHTML = `Balance: ${balance}`
+    const balance = localStorage.getItem(playerName) || 0;
 
-const input=document.getElementById("betAmount")
+    // Update the text in the HTML
+    document.getElementById("player").textContent += ` ${playerName}`;
+    document.getElementById("balance").textContent += ` ${balance}`;
+});
+
+let gameState = 0
+
+const bet = 0
 
 function submit() {
-    
+    let betInput = document.getElementById("betAmount").value
+    let bet = parseInt(betInput)
+    if (isNaN(bet) || bet<= 0 || bet>balance) {
+        alert("Please place a valid bet")
+        return;
+    }
+    toggleButton("deal")
+    toggleButton("submit")
+    console.log(bet) 
+    let total = balance - bet
+    document.getElementById('balance').innerHTML = `Balance: ${total}`
 }
 
 function Name(card) {
@@ -111,10 +131,10 @@ function deal() {
     if (dealer1[4] == "A") {
         aceDealer ++;
     }
-    dealerCard1 = document.getElementById("dealerCard1")
+    let dealerCard1 = document.getElementById("dealerCard1")
     dealerCard1.src = dealer1
     dealerCard1.className = "card"
-    dealerCard2=document.getElementById("dealerCard2")
+    let dealerCard2=document.getElementById("dealerCard2")
     dealerCard2.src = "PNG/red_back.png"
     dealerCard2.className = "card"
 
@@ -373,7 +393,7 @@ function resetGameState() {
     document.getElementById("result").innerHTML = "RESULT";
     
     // Reset buttons
-    document.getElementById("deal").disabled = false;
+    document.getElementById("deal").disabled = true;
     document.getElementById("hit").disabled = true;
     document.getElementById("stay").disabled = true;
 }
