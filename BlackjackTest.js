@@ -1,28 +1,24 @@
 let playerName=''
 let balance =''
 
-window.addEventListener("load", () => {
-    playerName = sessionStorage.getItem("Current Player");
 
-    if (!playerName) {
-        alert("No player logged in — redirecting to login page.");
-        window.location.href = "login.html";
-        return;
-    }
-
-    balance = parseInt(localStorage.getItem(playerName)) || 0;
-
-    document.getElementById("player").textContent += ` ${playerName}`;
-    document.getElementById("balance").textContent += ` ${balance}`;
-});
+playerName = sessionStorage.getItem("Current Player");
+if (!playerName) {
+    alert("No player logged in — redirecting to login page.");
+    window.location.href = "login.html";
+}
+balance = parseInt(localStorage.getItem(playerName)) || 0;
+document.getElementById("player").textContent += ` ${playerName}`;
+document.getElementById("balance").textContent += ` ${balance}`;
 
 let gameState = 0
 
-const bet = 0
+let newBalance = 0
+let bet = 0
 
 function submit() {
     let betInput = document.getElementById("betAmount").value
-    let bet = parseInt(betInput)
+    bet = parseInt(betInput)
     if (isNaN(bet) || bet<= 0 || bet>balance) {
         alert("Please place a valid bet")
         return;
@@ -30,8 +26,8 @@ function submit() {
     toggleButton("deal")
     toggleButton("submit")
     console.log(bet) 
-    let total = balance - bet
-    document.getElementById('balance').innerHTML = `Balance: ${total}`
+    newBalance = balance - bet
+    document.getElementById('balance').innerHTML = `Balance: ${newBalance}`
     toggleButton('betAmount')
 }
 
@@ -226,13 +222,16 @@ function hit() {
     }else if (total > 21){
         let container = document.getElementById("cardsDiv")
         let children = container.querySelectorAll("*")
-        document.getElementById("result").innerHTML = "lose"
+        localStorage.setItem(playerName, newBalance)
+        balance = parseInt(localStorage.getItem(playerName)) || 0;
+        document.getElementById("balance").textContent = `Balance: ${balance}`;
         setTimeout(() => {
             children.forEach(el => el.classList.add("loseBorder"))
             gameState = 1
             toggleButton("hit")
             toggleButton("stay")
-            toggleButton("deal")
+            toggleButton("betAmount")
+            toggleButton("submit")
         }, 1000)
         /*setTimeout(() => {
         window.location.href = "you-lose.html"
@@ -306,30 +305,43 @@ function dealerLogic() {
             setTimeout(() => { dealerLogic(); }, 1000);
         } else if (dealertotal > 21) {
             gameState = 1
+            localStorage.setItem(playerName, (newBalance + (bet*2)));
+            balance = parseInt(localStorage.getItem(playerName)) || 0;
+            document.getElementById("balance").textContent = `Balance: ${balance}`;
             setTimeout(() => {
                 children.forEach(el => el.classList.add("winBorder"))
-                toggleButton("deal")
+                toggleButton("betAmount")
+                toggleButton("submit")
             },300)
             
         } else if (dealertotal < 22 && total > dealertotal) {
             gameState = 1
+            localStorage.setItem(playerName, (newBalance + (bet*2)));
+            balance = parseInt(localStorage.getItem(playerName)) || 0;
+            document.getElementById("balance").textContent = `Balance: ${balance}`;
             setTimeout(() => {
-                children.forEach(el => el.classList.add("winBorder"))
-                toggleButton("deal")
+                children.forEach(el => el.classList.add("winBorder"));
+                toggleButton("betAmount");
+                toggleButton("submit");
             },300)
             
         } else if (dealertotal < 22 && total < dealertotal) {
             gameState = 1
+            localStorage.setItem(playerName, newBalance)
+            balance = parseInt(localStorage.getItem(playerName)) || 0;
+            document.getElementById("balance").textContent = `Balance: ${balance}`;
             setTimeout(() => {
-                children.forEach(el => el.classList.add("loseBorder"))
-                toggleButton("deal")
+                children.forEach(el => el.classList.add("loseBorder"));
+                toggleButton("betAmount");
+                toggleButton("submit");
             },300)
             
         } else if (dealertotal === total) {
             gameState = 1
             setTimeout(() => {
-                children.forEach(el => el.classList.add("pushBorder"))
-                toggleButton("deal")
+                children.forEach(el => el.classList.add("pushBorder"));
+                toggleButton("betAmount");
+                toggleButton("submit");
             },300)
             
         }
@@ -375,7 +387,7 @@ function resetGameState() {
     counter = 3;
     dealCounter = 3;
     gameState = 0;
-    
+
     // Hide all cards and remove dynamically created ones
     const allCards = document.querySelectorAll('.card');
     allCards.forEach(card => {
