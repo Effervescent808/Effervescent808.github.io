@@ -21,6 +21,7 @@ body {
     min-height: 170px;
     min-width: 100%;
     overflow: visible;
+    margin-bottom:2%;
 }
 
 .card { 

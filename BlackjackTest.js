@@ -1,5 +1,8 @@
+let playerName=''
+let balance =''
+
 window.addEventListener("load", () => {
-    const playerName = sessionStorage.getItem("Current Player");
+    playerName = sessionStorage.getItem("Current Player");
 
     if (!playerName) {
         alert("No player logged in — redirecting to login page.");
@@ -7,9 +10,8 @@ window.addEventListener("load", () => {
         return;
     }
 
-    const balance = localStorage.getItem(playerName) || 0;
+    balance = parseInt(localStorage.getItem(playerName)) || 0;
 
-    // Update the text in the HTML
     document.getElementById("player").textContent += ` ${playerName}`;
     document.getElementById("balance").textContent += ` ${balance}`;
 });
@@ -30,6 +32,7 @@ function submit() {
     console.log(bet) 
     let total = balance - bet
     document.getElementById('balance').innerHTML = `Balance: ${total}`
+    toggleButton('betAmount')
 }
 
 function Name(card) {
@@ -302,7 +305,6 @@ function dealerLogic() {
             document.getElementById("test").innerHTML = dealertotal;
             setTimeout(() => { dealerLogic(); }, 1000);
         } else if (dealertotal > 21) {
-            document.getElementById("result").innerHTML = "dealer bust"
             gameState = 1
             setTimeout(() => {
                 children.forEach(el => el.classList.add("winBorder"))
@@ -310,7 +312,6 @@ function dealerLogic() {
             },300)
             
         } else if (dealertotal < 22 && total > dealertotal) {
-            document.getElementById("result").innerHTML = "win"
             gameState = 1
             setTimeout(() => {
                 children.forEach(el => el.classList.add("winBorder"))
@@ -318,7 +319,6 @@ function dealerLogic() {
             },300)
             
         } else if (dealertotal < 22 && total < dealertotal) {
-            document.getElementById("result").innerHTML = "lose"
             gameState = 1
             setTimeout(() => {
                 children.forEach(el => el.classList.add("loseBorder"))
@@ -326,7 +326,6 @@ function dealerLogic() {
             },300)
             
         } else if (dealertotal === total) {
-            document.getElementById("result").innerHTML = "push"
             gameState = 1
             setTimeout(() => {
                 children.forEach(el => el.classList.add("pushBorder"))
@@ -390,7 +389,6 @@ function resetGameState() {
     // Reset scores
     document.getElementById("p").innerHTML = "Player Score";
     document.getElementById("test").innerHTML = "Dealer Score";
-    document.getElementById("result").innerHTML = "RESULT";
     
     // Reset buttons
     document.getElementById("deal").disabled = true;
