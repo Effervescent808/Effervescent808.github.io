@@ -237,6 +237,6 @@ body {
         to{transform: translateY(1.5vh) rotate(-5deg);}
     }
     #submit {
-        padding: 2%;
+        padding: 1.5%;
     }
 }
