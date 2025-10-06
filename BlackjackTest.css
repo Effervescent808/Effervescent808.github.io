@@ -234,4 +234,7 @@ body {
         from{transform: translateY(1.5vh) rotate(-5deg);}
         to{transform: translateY(1.5vh) rotate(-5deg);}
     }
+    #submit {
+        padding: 2%;
+    }
 }
