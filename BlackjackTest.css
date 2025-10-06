@@ -60,7 +60,7 @@ body {
     border: white solid 2px;
     text-align: center;
     margin: 2% auto;
-    padding: 2%;
+    padding: 8px;
     display: flex;
     width: fit-content;
     align-items: center;
@@ -115,7 +115,7 @@ body {
     padding: 4px;
     font-size: medium;
     font-weight: 800;
-    transform: translateY(4vh);
+    transform: translateY(2vh);
 }
 
 #score-div1 {

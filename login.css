@@ -20,7 +20,7 @@ input[type=text] {
     padding: 3px;
     border: none;
     border-bottom: 2px solid white;
-    background-color: #121212;
+    background-color: #252526;
     caret-color: white;
     color: white;
 }
@@ -28,6 +28,8 @@ input[type=text] {
 input[type=submit] {
     padding: 5px;
     border-radius: 10%;
+    color: black;
+    background-color: white;
 }
 
 input:focus {
@@ -40,5 +42,6 @@ input:focus {
     }
     input[type=submit] {
         font-size: x-large;
+        padding-top: 2%;
     }
 }
