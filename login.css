@@ -34,3 +34,11 @@ input:focus {
     outline: none;
 }
 
+@media (max-width: 768px){
+    input[type=text] {
+        font-size: x-large;
+    }
+    input[type=submit] {
+        font-size: x-large;
+    }
+}
