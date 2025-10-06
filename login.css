@@ -42,6 +42,6 @@ input:focus {
     }
     input[type=submit] {
         font-size: x-large;
-        padding-top: 2%;
+        margin: 2%;
     }
 }
