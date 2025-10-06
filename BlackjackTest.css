@@ -76,6 +76,8 @@ body {
 #submit {
     font-weight: 700;
     border-radius: 15%;
+    color:black;
+    background-color: white;
 }
 
 @keyframes deal {
