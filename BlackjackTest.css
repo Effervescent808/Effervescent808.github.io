@@ -234,6 +234,9 @@ body {
         padding: 5px;
         min-height: 110px;
     }
+    #dealerDiv {
+        margin-bottom: 25px;
+    }
     #player_div {
         font-size: smaller;
     }
