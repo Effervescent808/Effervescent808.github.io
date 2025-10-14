@@ -211,7 +211,7 @@ body {
     border-radius: 15%;
 }
 
-#player {
+#player, #lastResult {
     color: white;
 }
 
@@ -239,4 +239,8 @@ body {
     #submit {
         padding: 1.5%;
     }
+}
+
+#resultInt {
+    color: green;
 }

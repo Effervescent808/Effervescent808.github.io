@@ -20,15 +20,15 @@ function submit() {
     let betInput = document.getElementById("betAmount").value
     bet = parseInt(betInput)
     if (isNaN(bet) || bet<= 0 || bet>balance) {
-        alert("Please place a valid bet")
+        alert("Please place a valid bet");
         return;
     }
-    toggleButton("deal")
-    toggleButton("submit")
-    console.log(bet) 
-    newBalance = balance - bet
-    document.getElementById('balance').innerHTML = `Balance: ${newBalance}`
-    toggleButton('betAmount')
+    toggleButton("submit");
+    document.getElementById("deal").disabled = false;
+    console.log(bet);
+    newBalance = balance - bet;
+    document.getElementById('balance').innerHTML = `Balance: ${newBalance}`;
+    toggleButton('betAmount');
 }
 
 function Name(card) {
@@ -96,6 +96,7 @@ function Card() {
 
 let aceCounter = 0
 let aceDealer = 0
+let offRip21 = false
 
 function deal() {
     toggleButton("deal")
@@ -120,6 +121,7 @@ function deal() {
     }
 
     if (value1 + value2 == 21) {
+        offRip21 = true
         setTimeout(() => {stay()}, 500)
     }
     
@@ -223,6 +225,8 @@ function hit() {
         let container = document.getElementById("cardsDiv")
         let children = container.querySelectorAll("*")
         localStorage.setItem(playerName, newBalance)
+        document.getElementById("resultInt").innerHTML = `-${bet}`;
+        document.getElementById("resultInt").style.color = "red";
         balance = parseInt(localStorage.getItem(playerName)) || 0;
         document.getElementById("balance").textContent = `Balance: ${balance}`;
         setTimeout(() => {
@@ -305,7 +309,15 @@ function dealerLogic() {
             setTimeout(() => { dealerLogic(); }, 1000);
         } else if (dealertotal > 21) {
             gameState = 1
-            localStorage.setItem(playerName, (newBalance + (bet*2)));
+            if (offRip21 == true) {
+                localStorage.setItem(playerName, (newBalance + (bet*2.5)));
+                document.getElementById("resultInt").innerHTML = `${bet*2.5}`;
+                document.getElementById("resultInt").style.color = "green";
+            } else {
+                localStorage.setItem(playerName, (newBalance + (bet*2)));
+                document.getElementById("resultInt").innerHTML = `${bet*2}`;
+                document.getElementById("resultInt").style.color = "green";
+            }
             balance = parseInt(localStorage.getItem(playerName)) || 0;
             document.getElementById("balance").textContent = `Balance: ${balance}`;
             setTimeout(() => {
@@ -316,18 +328,28 @@ function dealerLogic() {
             
         } else if (dealertotal < 22 && total > dealertotal) {
             gameState = 1
-            localStorage.setItem(playerName, (newBalance + (bet*2)));
+            if (offRip21 == true) {
+                localStorage.setItem(playerName, (newBalance + (bet*2.5)));
+                document.getElementById("resultInt").innerHTML = `${bet*2.5}`;
+                document.getElementById("resultInt").style.color = "green";   
+            } else {
+                localStorage.setItem(playerName, (newBalance + (bet*2)));
+                document.getElementById("resultInt").innerHTML = `${bet*2}`;
+                document.getElementById("resultInt").style.color = "green";
+            }
             balance = parseInt(localStorage.getItem(playerName)) || 0;
             document.getElementById("balance").textContent = `Balance: ${balance}`;
             setTimeout(() => {
                 children.forEach(el => el.classList.add("winBorder"));
-                toggleButton("betAmount");
+                document.getElementById("betAmount").disabled = false;
                 toggleButton("submit");
             },300)
             
         } else if (dealertotal < 22 && total < dealertotal) {
             gameState = 1
             localStorage.setItem(playerName, newBalance)
+            document.getElementById("resultInt").innerHTML = `-${bet}`;
+            document.getElementById("resultInt").style.color = "red";
             balance = parseInt(localStorage.getItem(playerName)) || 0;
             document.getElementById("balance").textContent = `Balance: ${balance}`;
             setTimeout(() => {
@@ -338,6 +360,8 @@ function dealerLogic() {
             
         } else if (dealertotal === total) {
             gameState = 1
+            document.getElementById("resultInt").innerHTML = 0
+            document.getElementById("resultInt").style.color = "yellow";
             setTimeout(() => {
                 children.forEach(el => el.classList.add("pushBorder"));
                 toggleButton("betAmount");
