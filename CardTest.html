@@ -13,20 +13,24 @@
                 <p id="balance">Balance: </p>
                 <p id="lastResult">Last Result: <span id="resultInt">500</span></p>
             </div>
+        </div>
+        <div class="cardContainer">
             <div id="score-div1">
                 <p id="test" class="score">Dealer Score</p><br>
             </div>
+            <div id="dealerDiv">
+                <img src="TEMP" id="dealerCard1" hidden>
+                <img src="TEMP" id="dealerCard2" hidden>
+            </div>
         </div>
-        <div id="dealerDiv">
-            <img src="TEMP" id="dealerCard1" hidden>
-            <img src="TEMP" id="dealerCard2" hidden>
-        </div>
-        <div id="score-div2">
-            <p id="p" class="score" style="transform: translateY(5vh);">Player Score</p>
-        </div>
-        <div id="cardsDiv">
-            <img src="TEMP" class="card" id="card1">
-            <img src="TEMP" class="card" id="card2">
+        <div class="cardContainer">
+            <div id="score-div2">
+                <p id="p" class="score">Player Score</p>
+            </div>
+            <div id="cardsDiv">
+                <img src="TEMP" class="card" id="card1">
+                <img src="TEMP" class="card" id="card2">
+            </div>
         </div>
         <div id="buttonDiv">
             <button onclick="dealButton()" id="deal" class="button" disabled>Deal</button>
