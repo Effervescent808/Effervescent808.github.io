@@ -11,7 +11,7 @@
             <div id="player_div">
                 <p id="player">Player: </p>
                 <p id="balance">Balance: </p>
-                <p id="lastResult">Last Result: <span id="resultInt"></span></p>
+                <p id="lastResult">Last Hand: <span id="resultInt"></span></p>
             </div>
         </div>
         <div class="cardContainer">
@@ -33,9 +33,13 @@
             </div>
         </div>
         <div id="buttonDiv">
-            <button onclick="dealButton()" id="deal" class="button" disabled>Deal</button>
             <button onclick="hit()" id="hit" class="button" disabled>Hit</button>
             <button onclick="stay()" id="stay" class="button" disabled>Stay</button>
+            <button onclick="doubleDown()" id="doubleDown" class="button" disabled>Double</button>
+            <button onclick="split()" id="split" class="button" disabled>Split</button>
+        </div>
+        <div id="dealButtonDiv">
+            <button onclick="dealButton()" id="deal" disabled>Deal</button>
         </div>
         <div id="bal_div">
             <input id="betAmount" type="number" placeholder="Bet Amount">

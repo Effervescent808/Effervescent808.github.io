@@ -1,6 +1,13 @@
 let playerName=''
-let balance =''
+let balance = 0;
 
+let dealbutton = document.getElementById("deal")
+let hitbutton = document.getElementById("hit")
+let staybutton = document.getElementById("stay")
+let doublebutton = document.getElementById("doubleDown")
+let splitbutton = document.getElementById("split")
+let submitbutton = document.getElementById("submit")
+let betamount = document.getElementById("betAmount")
 
 playerName = sessionStorage.getItem("Current Player");
 if (!playerName) {
@@ -8,8 +15,8 @@ if (!playerName) {
     window.location.href = "login.html";
 }
 balance = parseInt(localStorage.getItem(playerName)) || 0;
-document.getElementById("player").textContent += ` ${playerName}`;
-document.getElementById("balance").textContent += ` ${balance}`;
+document.getElementById("player").textContent = `Player: ${playerName}`;
+document.getElementById("balance").textContent = `Balance: ${balance}`;
 
 let gameState = 0
 
@@ -17,18 +24,19 @@ let newBalance = 0
 let bet = 0
 
 function submit() {
+    bet = 0
     let betInput = document.getElementById("betAmount").value
     bet = parseInt(betInput)
     if (isNaN(bet) || bet<= 0 || bet>balance) {
         alert("Please place a valid bet");
         return;
     }
-    toggleButton("submit");
-    document.getElementById("deal").disabled = false;
+    submitbutton.disabled = true;
+    dealbutton.disabled = false;
     console.log(bet);
     newBalance = balance - bet;
     document.getElementById('balance').innerHTML = `Balance: ${newBalance}`;
-    toggleButton('betAmount');
+    betamount.disabled = true;
 }
 
 function Name(card) {
@@ -55,11 +63,6 @@ function Value(card) {
     } else {
         return card
     }
-}
-
-function toggleButton(variable) {
-    const button = document.getElementById(variable)
-    button.disabled = !button.disabled;
 }
 
 let currentCards=[]
@@ -99,15 +102,18 @@ let aceDealer = 0
 let offRip21 = false
 
 function deal() {
-    toggleButton("deal")
-    toggleButton("hit")
-    toggleButton("stay")
+    dealbutton.disabled = true
+    hitbutton.disabled = false
+    staybutton.disabled = false
+    doublebutton.disabled = false
 
     const image2 = document.getElementById("card2");
     let [card1, value1] = Card()
     let [card2, value2] = Card()
 
-    if (card1[4] == "A" || card2[4] == "A") {
+    if (card1[4] == "A") {
+        aceCounter ++;
+    } else if(card2[4] == "A") {
         aceCounter ++;
     }
 
@@ -232,10 +238,11 @@ function hit() {
         setTimeout(() => {
             children.forEach(el => el.classList.add("loseBorder"))
             gameState = 1
-            toggleButton("hit")
-            toggleButton("stay")
-            toggleButton("betAmount")
-            toggleButton("submit")
+            hitbutton.disabled = true
+            staybutton.disabled = true
+
+            betamount.disabled = false
+            submitbutton.disabled = false
         }, 1000)
         /*setTimeout(() => {
         window.location.href = "you-lose.html"
@@ -249,8 +256,10 @@ function hit() {
 let dealCounter = 3
 
 function stay() {
-    toggleButton("hit")
-    toggleButton("stay")
+    hitbutton.disabled = true
+    staybutton.disabled = true
+    doublebutton.disabled = true
+
     let [dealer2, dealvalue2] = Card()
 
     if (dealer2[4] == "A") {
@@ -311,38 +320,38 @@ function dealerLogic() {
             gameState = 1
             if (offRip21 == true) {
                 localStorage.setItem(playerName, (newBalance + (bet*2.5)));
-                document.getElementById("resultInt").innerHTML = `${bet*2.5}`;
+                document.getElementById("resultInt").innerHTML = `${bet*1.5}`;
                 document.getElementById("resultInt").style.color = "green";
             } else {
                 localStorage.setItem(playerName, (newBalance + (bet*2)));
-                document.getElementById("resultInt").innerHTML = `${bet*2}`;
+                document.getElementById("resultInt").innerHTML = `${bet}`;
                 document.getElementById("resultInt").style.color = "green";
             }
             balance = parseInt(localStorage.getItem(playerName)) || 0;
             document.getElementById("balance").textContent = `Balance: ${balance}`;
             setTimeout(() => {
                 children.forEach(el => el.classList.add("winBorder"))
-                toggleButton("betAmount")
-                toggleButton("submit")
+                betamount.disabled = false
+                submitbutton.disabled = false
             },300)
             
         } else if (dealertotal < 22 && total > dealertotal) {
             gameState = 1
             if (offRip21 == true) {
                 localStorage.setItem(playerName, (newBalance + (bet*2.5)));
-                document.getElementById("resultInt").innerHTML = `${bet*2.5}`;
+                document.getElementById("resultInt").innerHTML = `${bet*1.5}`;
                 document.getElementById("resultInt").style.color = "green";   
             } else {
                 localStorage.setItem(playerName, (newBalance + (bet*2)));
-                document.getElementById("resultInt").innerHTML = `${bet*2}`;
+                document.getElementById("resultInt").innerHTML = `${bet}`;
                 document.getElementById("resultInt").style.color = "green";
             }
             balance = parseInt(localStorage.getItem(playerName)) || 0;
             document.getElementById("balance").textContent = `Balance: ${balance}`;
             setTimeout(() => {
                 children.forEach(el => el.classList.add("winBorder"));
-                document.getElementById("betAmount").disabled = false;
-                toggleButton("submit");
+                betamount.disabled = false
+                submitbutton.disabled = false
             },300)
             
         } else if (dealertotal < 22 && total < dealertotal) {
@@ -354,21 +363,40 @@ function dealerLogic() {
             document.getElementById("balance").textContent = `Balance: ${balance}`;
             setTimeout(() => {
                 children.forEach(el => el.classList.add("loseBorder"));
-                toggleButton("betAmount");
-                toggleButton("submit");
+                betamount.disabled = false
+                submitbutton.disabled = false
             },300)
             
         } else if (dealertotal === total) {
             gameState = 1
-            document.getElementById("resultInt").innerHTML = 0
+            document.getElementById("balance").textContent = `Balance: ${balance}`;
+            document.getElementById("resultInt").innerHTML = 0;
             document.getElementById("resultInt").style.color = "yellow";
             setTimeout(() => {
                 children.forEach(el => el.classList.add("pushBorder"));
-                toggleButton("betAmount");
-                toggleButton("submit");
+                betamount.disabled = false
+                submitbutton.disabled = false
             },300)
             
         }
+    }
+}
+
+function doubleDown() {
+    if (balance < bet *2)
+        alert("Insuficient Funds")
+    else { 
+        newBalance -= bet;
+        bet = bet * 2;
+        document.getElementById('balance').innerHTML = `Balance: ${newBalance}`;
+        
+        hit();
+        
+        setTimeout(() => {
+            if (gameState === 0) { 
+                stay();
+            }
+        }, 1200);
     }
 }
 
@@ -411,6 +439,9 @@ function resetGameState() {
     counter = 3;
     dealCounter = 3;
     gameState = 0;
+    offRip21 = false;
+    currentCards = [];
+
 
     // Hide all cards and remove dynamically created ones
     const allCards = document.querySelectorAll('.card');

@@ -204,7 +204,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1%;   
+    gap: .4%;   
 }
 
 .button {
@@ -214,6 +214,24 @@ body {
     padding-right: 10px;
     font-weight: 800;
     border-radius: 15%;
+    color: black;
+}
+
+#dealButtonDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: .4%
+}
+
+#deal {
+    padding-left: 105px;
+    padding-right: 105px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 10px;
+    font-weight: 800;
+    color: black;
 }
 
 #player, #lastResult {
@@ -233,6 +251,13 @@ body {
     #cardsDiv, #dealerDiv {
         padding: 5px;
         min-height: 110px;
+    }
+    #deal {
+        padding-left: 102px;
+        padding-right: 102px;
+    }
+    #buttonDiv {
+        gap: 1%;
     }
     #dealerDiv {
         margin-bottom: 10px;
