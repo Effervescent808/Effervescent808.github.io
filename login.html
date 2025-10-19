@@ -3,23 +3,37 @@
 <html>
     <head>
         <link rel="stylesheet" href="login.css">
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+    </head>
+    <body>
+        <div id="login">
+            <form id="form">
+                <p id="instructions">Login with your name:</p>
+                <input type="text" id="player" name="player" placeholder="Name">
+                <input type="submit" id="submit" Value="Submit" onclick="submit()">
+            </form>
+        </div>
         <script>
+            const form = document.getElementById("form")
+
+            form.onsubmit = function(event) {
+              event.preventDefault();
+              submit();
+            }
+
             function submit() {
-                //localStorage.clear()
+                // localStorage.clear()
+            
+                const field = document.getElementById("player");
+
+
                 
-                const field = document.getElementById("player")
-
-                while (true) {
-                    if (!/^[A-Za-z]+$/.test(field.value)) {
-                        alert("Use only letters with no spaces");
-                        field.value = "";
-                        return;
-                    } else {
-                        break;
-                    }
+                if (!/^[A-Za-z]+$/.test(field.value)) {
+                    alert("Use only letters with no spaces");
+                    field.value = "";
+                    return;
                 }
-
+                
                 let player = document.getElementById('player').value
                 console.log(player)
 
@@ -36,18 +50,10 @@
                 console.log(localStorage.getItem(player))
 
                 field.value = ""
-
+    
                 setTimeout (() => {window.location.href = 'CardTest.html'}, 500)
                 console.log('switching pages...')
             }
         </script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-    </head>
-    <body>
-        <div id="login">
-            <p id="instructions">Login with your name:</p>
-            <input type="text" id="player" name="player" placeholder="Name">
-            <input type="submit" id="submit" Value="Submit" onclick="submit()">
-        </div>
     </body>
 </html>

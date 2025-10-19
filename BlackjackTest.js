@@ -23,6 +23,13 @@ let gameState = 0
 let newBalance = 0
 let bet = 0
 
+const form = document.getElementById("bet_submit")
+
+form.onsubmit = function(event) {
+    event.preventDefault();
+    submit();
+  }
+
 function submit() {
     bet = 0
     let betInput = document.getElementById("betAmount").value
@@ -179,7 +186,8 @@ function deal() {
 let counter = 3
 
 function hit() {
-
+    doublebutton.disabled = true;
+    splitbutton.disabled - true;
     let cardDiv = document.getElementById("cardsDiv");
     let [newCard, newCardVal] = Card()
     let img = document.createElement("img");
@@ -198,7 +206,7 @@ function hit() {
         aceCounter ++;
     }
 
-// AUTO TILT -- BROKEN RN
+// AUTO TILT -- BROKEN RN -- Works after hand ends? probably smth with the card class
     /*let rangeBottom = -15
     let rangeTop = 15
     
@@ -400,6 +408,33 @@ function doubleDown() {
     }
 }
 
+/* 
+
+HOW TO MAKE SPLIT:
+
+1. Figure out how to split "card1" and "card2"
+    - translateX()?
+    - create 2 divs?
+    - increase margin on .card then create a new class for the split cards?
+
+2. Figure out how to hit once per side of the split
+    - Use splitTrue as split toggle and send score to one side at a time
+
+3. Figure out how to split the Player Score bubble into 2
+    - Animation?
+    - Create a second bubble and have it start in the same spot
+
+4. Research Logic for win/loss/tie with splits
+    - Implement said logic
+
+*/
+
+let splitTrue = false;
+
+function split() {
+    splitTrue = true;
+
+}
 
 function dealButton() {
     if (gameState == 0) {
