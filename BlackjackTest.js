@@ -27,10 +27,10 @@ const form = document.getElementById("bet_submit")
 
 form.onsubmit = function(event) {
     event.preventDefault();
-    submit();
+    handleSubmit();
   }
 
-function submit() {
+function handleSubmit() {
     bet = 0
     let betInput = document.getElementById("betAmount").value
     bet = parseInt(betInput)
