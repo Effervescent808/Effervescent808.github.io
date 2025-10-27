@@ -48,6 +48,11 @@ function handleSubmit() {
     betamount.disabled = true;
 }
 
+function allIn() {
+    document.getElementById("betAmount").value = `${balance}`;
+    setTimeout(() => {handleSubmit()},300);
+}
+
 function Name(card) {
     card = parseInt(card)
     if (card < 11 && card > 1) {
@@ -498,4 +503,5 @@ function resetGameState() {
     document.getElementById("deal").disabled = true;
     document.getElementById("hit").disabled = true;
     document.getElementById("stay").disabled = true;
+    allInButton.disabled = false;
 }

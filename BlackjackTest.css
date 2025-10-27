@@ -3,10 +3,10 @@ html{
     width: 100%;
 }
 body {
-    /*background-image: url(BlackjackTable.jpg);
+    /* background-image: url(BlackjackTable.jpg);
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: 100% 100%;*/
+    background-size: 100% 100%; */
     background-color: #252526;
 }
     
@@ -60,7 +60,8 @@ body {
 }
 
 #bal_div {
-    border: white solid 2px;
+    border: white solid 3px;
+    border-radius: 5px;
     text-align: center;
     margin: 2% auto;
     padding: 8px;
@@ -76,10 +77,11 @@ body {
     width: 100%;
 }
 
-#submit, #allIn {
+#submit,
+#allIn {
     font-weight: 700;
-    border-radius: 15%;
-    color:black;
+    border-radius: 10px;
+    color: black;
     background-color: white;
     margin: 3%;
 }
@@ -214,8 +216,14 @@ body {
     padding-left: 10px;
     padding-right: 10px;
     font-weight: 800;
-    border-radius: 15%;
+    border-radius: 10px;
     color: black;
+    box-shadow: 1px 1px 5px
+}
+
+.button:hover,
+.button:disabled {
+    box-shadow: 0 0 0;
 }
 
 #dealButtonDiv {
@@ -233,6 +241,12 @@ body {
     border-radius: 10px;
     font-weight: 800;
     color: black;
+    box-shadow: 1px 1px 5px
+}
+
+#deal:hover,
+#deal:disabled {
+    box-shadow: 0 0 0;
 }
 
 #player, #lastResult {
