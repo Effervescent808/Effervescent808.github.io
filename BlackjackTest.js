@@ -8,6 +8,7 @@ let doublebutton = document.getElementById("doubleDown")
 let splitbutton = document.getElementById("split")
 let submitbutton = document.getElementById("submit")
 let betamount = document.getElementById("betAmount")
+let allInButton = document.getElementById("allIn")
 
 playerName = sessionStorage.getItem("Current Player");
 if (!playerName) {
@@ -40,6 +41,7 @@ function handleSubmit() {
     }
     submitbutton.disabled = true;
     dealbutton.disabled = false;
+    allInButton.disabled = true;
     console.log(bet);
     newBalance = balance - bet;
     document.getElementById('balance').innerHTML = `Balance: ${newBalance}`;

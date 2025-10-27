@@ -64,7 +64,7 @@ body {
     text-align: center;
     margin: 2% auto;
     padding: 8px;
-    display: flex;
+    display: block;
     width: fit-content;
     align-items: center;
     justify-content: center;
@@ -76,11 +76,12 @@ body {
     width: 100%;
 }
 
-#submit {
+#submit, #allIn {
     font-weight: 700;
     border-radius: 15%;
     color:black;
     background-color: white;
+    margin: 3%;
 }
 
 @keyframes deal {
@@ -249,7 +250,7 @@ body {
         margin: -3%
     }
     #cardsDiv, #dealerDiv {
-        padding: 5px;
+        padding: 0px;
         min-height: 110px;
     }
     #deal {
@@ -282,6 +283,15 @@ body {
         padding: 3px 6px;
         font-size: smaller;
     }
+
+    input:disabled {
+    opacity: 0.5;     
+    cursor: not-allowed;     
+    filter: grayscale(100%); 
+    background-color: #ccc;  
+    color: #666;             
+}
+
 }
 
 #resultInt {
