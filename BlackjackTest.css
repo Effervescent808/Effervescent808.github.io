@@ -1,13 +1,15 @@
 html{
     height: 100%;
     width: 100%;
+    margin: 0;
 }
 body {
     /* background-image: url(BlackjackTable.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100% 100%; */
-    background-color: #252526;
+    background-color: #201e1e;
+    margin: 0;
 }
     
 
@@ -79,10 +81,6 @@ body {
 
 #submit,
 #allIn {
-    font-weight: 700;
-    border-radius: 10px;
-    color: black;
-    background-color: white;
     margin: 3%;
 }
 
@@ -255,7 +253,8 @@ body {
 
 #player_div{
     margin: 0;
-    margin-left: 2%;
+    margin-left: 7%;
+    margin-top: 3%;
 }
 
 @media (max-width: 768px){
@@ -310,4 +309,46 @@ body {
 
 #resultInt {
     color: green;
+}
+
+#TopLeft {
+    position: absolute;
+    top: 7%;
+    left: 7%;
+    transform: translate(-50%, -50%) rotate(180deg) scale(.2);
+}
+
+#TopRight {
+    position: absolute;
+    top: 8%;
+    left: 98%;
+    transform: translate(-50%, -50%) rotate(-90deg) scale(.2);
+}
+
+#BottomRight {
+    position: absolute;
+    top: 93%;
+    left: 97.5%;
+    transform: translate(-50%, -50%) scale(.2);
+}
+
+#BottomLeft {
+    position: absolute;
+    top: 91.5%;
+    left: 6.5%;
+    transform: translate(-50%, -50%) rotate(90deg) scale(.2);
+}
+
+#Edge1 {
+    position: absolute;
+    top: 4%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#Edge3 {
+    position: absolute;
+    top: 96%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
