@@ -85,13 +85,13 @@ body {
 }
 
 @keyframes deal {
-    from{transform: scale(0) translateY(-100vh) rotate(0deg);}
-    to{transform: scale(1) translateY(0vh) rotate(355deg);}
+    from{transform: scale(0) translateY(-100vh) translateX(50vh) rotate(0deg);}
+    to{transform: scale(1) translateY(0vh) translateX(0vh) rotate(355deg);}
 }
 
 @keyframes dealer {
-    from{transform: scale(0) translateY(-50vh) rotate(0deg)}
-    to{transform: scale(1) translateY(0vh) rotate(355deg);}
+    from{transform: scale(0) translateY(-50vh) translateX(50vh) rotate(0deg)}
+    to{transform: scale(1) translateY(0vh) translateX(0vh) rotate(355deg);}
 }
 
 @keyframes fade {
